@@ -6,12 +6,33 @@
 
     <groupId>de.felixsfd</groupId>
     <artifactId>EnhancedProperties</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>felixsfd</id>
+            <name>EnhancedProperties</name>
+            <url>https://maven.pkg.github.com/FelixSFD/EnhancedProperties</url>
+        </repository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>github</id>
+            <repositories>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub FelixSFD Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/FelixSFD/EnhancedProperties</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
@@ -27,5 +48,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>
