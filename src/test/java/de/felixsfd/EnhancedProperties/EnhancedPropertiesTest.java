@@ -2,10 +2,6 @@ package de.felixsfd.EnhancedProperties;
 
 import org.junit.Assert;
 
-import java.io.IOException;
-
-import static org.junit.Assert.*;
-
 public class EnhancedPropertiesTest {
   public EnhancedProperties testProperties = null;
 
