@@ -64,3 +64,41 @@ MyProperties myProperties = new MyProperties();
 double doubleValue = myProperties.getDoubleValue(0.0);
 ```
 
+# Example: Read file from resources
+
+To read a file from your application's resources, you can follow the instructions of the "basic example". Just change the superclass for `MyProperties` from `EnhancedPropertiesInFile` to `EnhancedPropertiesInResources`.
+
+```java
+public class MyProperties extends EnhancedPropertiesInResources {
+  protected MyProperties() throws IOException {
+    super("my.properties");
+  }
+
+  public double getDoubleValue(double defaultValue) {
+    return super.getDouble("doubleValue", defaultValue);
+  }
+}
+```
+
+# Example: Use two properties file overwriting each other
+
+For complex use-cases, you can read files from file-system and the application's resources at the same time. If a key is present in both files, the value from the preferred file will be used.
+This is useful, if you ship default properties within the resources of the application but you wan't to override some of the values.
+
+In this example, we assume, that the default properties are stored in the resources-root directory and the custom properties in `/home/user/application/my.properties`.
+The values of the file in the file-system should be preferred over the values in the resources.
+
+```java
+@ReadRule(preferredLocation = ReadRule.Location.FILE)
+public class MyProperties extends EnhancedPropertiesInResources {
+  protected MyProperties() throws IOException {
+    super("/home/user/application/my.properties", "my_default.properties");
+  }
+
+  public double getDoubleValue(double defaultValue) {
+    return super.getDouble("doubleValue", defaultValue);
+  }
+}
+```
+
+If you want the properties in the resources to be the preferred file, just change the annotation to `@ReadRule(preferredLocation = ReadRule.Location.RESOURCES)`.
