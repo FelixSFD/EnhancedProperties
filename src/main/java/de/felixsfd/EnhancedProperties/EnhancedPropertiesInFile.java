@@ -12,17 +12,25 @@ import java.util.Properties;
  * Abstract base-class for enhanced properties that are stored in the file-system.
  * <br />
  * If the file is stored in the application's resources, please use {@link EnhancedPropertiesInResources}.
+ * <br />
+ * If you want to use the properties from a file in the file-system and in the resources at the same time
+ * (overwriting each other), you can use {@link EnhancedPropertiesInFileOrResources}.
  */
 public abstract class EnhancedPropertiesInFile extends EnhancedProperties {
   @NotNull private final String path;
   @NotNull private Properties propertiesInFile;
 
 
+  /**
+   * Constructor with file path
+   * @param path Path to the properties-file
+   * @throws IOException If the file can't be read
+   */
   protected EnhancedPropertiesInFile(@NotNull String path) throws IOException {
     super();
     this.path = path;
     propertiesInFile = readFromFiles(path);
-  }
+  } // EnhancedPropertiesInFile
 
 
   /**
@@ -40,7 +48,7 @@ public abstract class EnhancedPropertiesInFile extends EnhancedProperties {
     }
 
     return prop;
-  }
+  } // readFromFiles
 
 
   @Override
@@ -65,4 +73,4 @@ public abstract class EnhancedPropertiesInFile extends EnhancedProperties {
   public String getPath() {
     return path;
   } // getPath
-}
+} // EnhancedPropertiesInFile

@@ -7,7 +7,7 @@ import de.felixsfd.EnhancedProperties.annotations.ReadRule;
 import java.io.IOException;
 
 
-@ReadRule(value = ReadRule.Preference.FILE_FIRST)
+@ReadRule(preferredLocation = ReadRule.Location.FILE)
 public class TestPropertiesFileFirst extends EnhancedPropertiesInFileOrResources {
   public TestPropertiesFileFirst() throws IOException {
     super(EnhancedPropertiesInFileOrResourcesTest.FILE_PATH, EnhancedPropertiesInFileOrResourcesTest.RESOURCES_PATH);

@@ -5,15 +5,43 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
+/**
+ * Abstract base class for the properties-wrapper. Do not implement this class.
+ * <br />
+ * Use one of these instead:
+ * <ul>
+ *   <li>{@link EnhancedPropertiesInFile}</li>
+ *   <li>{@link EnhancedPropertiesInResources}</li>
+ *   <li>{@link EnhancedPropertiesInFileOrResources}</li>
+ * </ul>
+ */
 abstract class EnhancedProperties {
+  /**
+   * Empty default constructor
+   */
   protected EnhancedProperties() {
   }
 
 
+  /**
+   * Returns the string-value of a key in the properties file.
+   * <br />
+   * When implementing this method, make sure to read the {@link java.util.Properties} correctly.
+   * @param key Key in the properties-file
+   * @return Value es string
+   */
   @Nullable
   public abstract String getString(@NotNull String key);
 
 
+  /**
+   * Returns the string-value of a key in the properties file.
+   * <br />
+   * When implementing this method, make sure to read the {@link java.util.Properties} correctly.
+   * @param key Key in the properties-file
+   * @param defaultValue Default value, if the value was null
+   * @return Value es string
+   */
   @Nullable
   public abstract String getString(@NotNull String key, @Nullable String defaultValue);
 
@@ -186,4 +214,4 @@ abstract class EnhancedProperties {
       return defaultValue;
     } // try-catch
   } // getDouble
-}
+} // EnhancedProperties
