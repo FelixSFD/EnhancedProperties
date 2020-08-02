@@ -14,11 +14,16 @@ jobs:
     
     strategy:
       matrix:
-        # test against latest update of each major Java version, as well as specific updates of LTS versions:
-        java: [ 1.8, 12, 13 ]
-    name: Java ${{ matrix.java }} sample
+        # test against latest update of each major Java version:
+        java: [ 1.8, 12, 13, 14, 15 ]
+    name: Test on Java ${{ matrix.java }}
 
     steps:
     - uses: actions/checkout@v2
+    - name: Setup Java JDK
+      uses: actions/setup-java@v1.4.0
+      with:
+        # The Java version to make available on the path. Takes a whole or semver Java version, or 1.x syntax (e.g. 1.8 => Java 8.x). Early access versions can be specified in the form of e.g. 14-ea, 14.0.0-ea, or 14.0.0-ea.28
+        java-version: ${{ matrix.java }}
     - name: Test with Maven
       run: mvn test --file pom.xml
