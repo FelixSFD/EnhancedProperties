@@ -8,6 +8,7 @@
     <artifactId>EnhancedProperties</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+    <name>EnhancedProperties</name>
     <description>EnhancedProperties is an improved way to read *.properties-files in Java</description>
     <url>https://github.com/FelixSFD/EnhancedProperties</url>
 
