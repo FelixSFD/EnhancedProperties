@@ -40,7 +40,7 @@ import java.util.Properties;
  */
 public abstract class EnhancedPropertiesInFile extends EnhancedPropertiesImpl {
   @NotNull private final String path;
-  @NotNull private Properties propertiesInFile;
+  @NotNull private final Properties propertiesInFile;
 
 
   /**

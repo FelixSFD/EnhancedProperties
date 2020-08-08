@@ -47,7 +47,11 @@ public @interface ReadRule {
    * Location of a value (file or resources)
    */
   enum Location {
-    FILE, RESOURCES
+    /// Properties-file is stored in the computer's file-system
+    FILE
+
+    /// Properties-file is stored in the application's resources
+    , RESOURCES
   } // enum
 
 
