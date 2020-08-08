@@ -22,6 +22,14 @@ jobs:
 
        - name: Run unit tests
          run: mvn -B test --file pom.xml
+       
+       - name: Release Maven package
+         uses: samuelmeuli/action-maven-publish@v1
+         with:
+           gpg_private_key: ${{ secrets.gpg_private_key }}
+           gpg_passphrase: ${{ secrets.gpg_passphrase }}
+           nexus_username: ${{ secrets.nexus_username }}
+           nexus_password: ${{ secrets.nexus_password }}
 
        - name: Deploy to GitHub packages
          run: mvn -B deploy --file pom.xml
