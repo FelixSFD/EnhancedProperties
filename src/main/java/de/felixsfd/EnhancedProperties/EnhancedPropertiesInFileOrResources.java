@@ -85,6 +85,7 @@ public abstract class EnhancedPropertiesInFileOrResources extends EnhancedProper
   /**
    * @return Path to the properties file in the application's properties
    */
+  @NotNull
   public String getResourcesPath() {
     return resourcesPath;
   }
@@ -93,6 +94,7 @@ public abstract class EnhancedPropertiesInFileOrResources extends EnhancedProper
   /**
    * @return Path to the properties file in the file-system
    */
+  @NotNull
   public String getFilePath() {
     return filePath;
   }
