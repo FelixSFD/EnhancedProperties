@@ -16,7 +16,7 @@ import java.util.Properties;
  * If you want to use the properties from a file in the file-system and in the resources at the same time
  * (overwriting each other), you can use {@link EnhancedPropertiesInFileOrResources}.
  */
-public abstract class EnhancedPropertiesInFile extends EnhancedProperties {
+public abstract class EnhancedPropertiesInFile extends EnhancedPropertiesImpl {
   @NotNull private final String path;
   @NotNull private Properties propertiesInFile;
 

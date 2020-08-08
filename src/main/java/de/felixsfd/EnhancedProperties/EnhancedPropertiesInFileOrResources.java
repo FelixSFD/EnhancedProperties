@@ -14,7 +14,7 @@ import java.util.Properties;
  * The keys in both files can override each other. To specify, which file will be used first, you can use the
  * {@link ReadRule} annotation.
  */
-public abstract class EnhancedPropertiesInFileOrResources extends EnhancedProperties {
+public abstract class EnhancedPropertiesInFileOrResources extends EnhancedPropertiesImpl {
   @NotNull private final String filePath;
   @NotNull private final String resourcesPath;
   @NotNull private final Properties propertiesFile;

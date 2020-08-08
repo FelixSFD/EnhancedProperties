@@ -3,26 +3,18 @@ package de.felixsfd.EnhancedProperties;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
 
 /**
- * Abstract base class for the properties-wrapper. Do not implement this class.
+ * Interface for the properties-wrapper. Do not implement this interface.
  * <br>
- * Use one of these instead:
+ * Use one of these classes instead:
  * <ul>
  *   <li>{@link EnhancedPropertiesInFile}</li>
  *   <li>{@link EnhancedPropertiesInResources}</li>
  *   <li>{@link EnhancedPropertiesInFileOrResources}</li>
  * </ul>
  */
-abstract class EnhancedProperties {
-  /**
-   * Empty default constructor
-   */
-  protected EnhancedProperties() {
-  }
-
-
+public interface EnhancedProperties {
   /**
    * Returns the string-value of a key in the properties file.
    * <br>
@@ -30,9 +22,7 @@ abstract class EnhancedProperties {
    * @param key Key in the properties-file
    * @return Value es string
    */
-  @Nullable
-  public abstract String getString(@NotNull String key);
-
+  @Nullable String getString(@NotNull String key);
 
   /**
    * Returns the string-value of a key in the properties file.
@@ -42,9 +32,7 @@ abstract class EnhancedProperties {
    * @param defaultValue Default value, if the value was null
    * @return Value es string
    */
-  @Nullable
-  public abstract String getString(@NotNull String key, @Nullable String defaultValue);
-
+  @Nullable String getString(@NotNull String key, @Nullable String defaultValue);
 
   /**
    * Returns the content of the key as short
@@ -53,11 +41,7 @@ abstract class EnhancedProperties {
    * @param key Key in the Properties-File
    * @return Values as Short
    */
-  public final short getShort(@NotNull String key) throws NumberFormatException, NullPointerException {
-    String valueStr = getString(key);
-    return Short.parseShort(Objects.requireNonNull(valueStr));
-  } // getShort
-
+  short getShort(@NotNull String key) throws NumberFormatException, NullPointerException;
 
   /**
    * Returns the content of the key as short
@@ -65,20 +49,7 @@ abstract class EnhancedProperties {
    * @param defaultValue Value, if the Key is null or not a number
    * @return Values as Short
    */
-  public final short getShort(@NotNull String key, short defaultValue) {
-    String valueStr = getString(key);
-
-    if (valueStr == null) {
-      return defaultValue;
-    }
-
-    try {
-      return Short.parseShort(valueStr);
-    } catch (NumberFormatException e) {
-      return defaultValue;
-    } // try-catch
-  } // getShort
-
+  short getShort(@NotNull String key, short defaultValue);
 
   /**
    * Returns the content of the key as int
@@ -87,11 +58,7 @@ abstract class EnhancedProperties {
    * @param key Key in the Properties-File
    * @return Values as Integer
    */
-  public final int getInt(@NotNull String key) throws NumberFormatException, NullPointerException {
-    String valueStr = getString(key);
-    return Integer.parseInt(Objects.requireNonNull(valueStr));
-  } // getInt
-
+  int getInt(@NotNull String key) throws NumberFormatException, NullPointerException;
 
   /**
    * Returns the content of the key as int
@@ -99,20 +66,7 @@ abstract class EnhancedProperties {
    * @param defaultValue Value, if the Key is null or not a number
    * @return Values as Integer
    */
-  public final int getInt(@NotNull String key, int defaultValue) {
-    String valueStr = getString(key);
-
-    if (valueStr == null) {
-      return defaultValue;
-    }
-
-    try {
-      return Integer.parseInt(valueStr);
-    } catch (NumberFormatException e) {
-      return defaultValue;
-    } // try-catch
-  } // getInt
-
+  int getInt(@NotNull String key, int defaultValue);
 
   /**
    * Returns the content of the key as long
@@ -121,11 +75,7 @@ abstract class EnhancedProperties {
    * @param key Key in the Properties-File
    * @return Values as Long
    */
-  public final long getLong(@NotNull String key) throws NumberFormatException, NullPointerException {
-    String valueStr = getString(key);
-    return Long.parseLong(Objects.requireNonNull(valueStr));
-  } // getLong
-
+  long getLong(@NotNull String key) throws NumberFormatException, NullPointerException;
 
   /**
    * Returns the content of the key as int
@@ -133,20 +83,7 @@ abstract class EnhancedProperties {
    * @param defaultValue Value, if the Key is null or not a number
    * @return Values as Integer
    */
-  public final long getLong(@NotNull String key, long defaultValue) {
-    String valueStr = getString(key);
-
-    if (valueStr == null) {
-      return defaultValue;
-    }
-
-    try {
-      return Long.parseLong(valueStr);
-    } catch (NumberFormatException e) {
-      return defaultValue;
-    } // try-catch
-  } // getLong
-
+  long getLong(@NotNull String key, long defaultValue);
 
   /**
    * Returns the content of the key as float
@@ -155,11 +92,7 @@ abstract class EnhancedProperties {
    * @param key Key in the Properties-File
    * @return Values as Float
    */
-  public final float getFloat(@NotNull String key) throws NumberFormatException, NullPointerException {
-    String valueStr = getString(key);
-    return Float.parseFloat(Objects.requireNonNull(valueStr));
-  } // getFloat
-
+  float getFloat(@NotNull String key) throws NumberFormatException, NullPointerException;
 
   /**
    * Returns the content of the key as float
@@ -167,20 +100,7 @@ abstract class EnhancedProperties {
    * @param defaultValue Value, if the Key is null or not a number
    * @return Values as Float
    */
-  public final float getFloat(@NotNull String key, float defaultValue) {
-    String valueStr = getString(key);
-
-    if (valueStr == null) {
-      return defaultValue;
-    }
-
-    try {
-      return Float.parseFloat(valueStr);
-    } catch (NumberFormatException e) {
-      return defaultValue;
-    } // try-catch
-  } // getFloat
-
+  float getFloat(@NotNull String key, float defaultValue);
 
   /**
    * Returns the content of the key as double
@@ -189,11 +109,7 @@ abstract class EnhancedProperties {
    * @param key Key in the Properties-File
    * @return Values as Double
    */
-  public final double getDouble(@NotNull String key) throws NumberFormatException, NullPointerException {
-    String valueStr = getString(key);
-    return Double.parseDouble(Objects.requireNonNull(valueStr));
-  } // getDouble
-
+  double getDouble(@NotNull String key) throws NumberFormatException, NullPointerException;
 
   /**
    * Returns the content of the key as double
@@ -201,17 +117,5 @@ abstract class EnhancedProperties {
    * @param defaultValue Value, if the Key is null or not a number
    * @return Values as Double
    */
-  public final double getDouble(@NotNull String key, double defaultValue) {
-    String valueStr = getString(key);
-
-    if (valueStr == null) {
-      return defaultValue;
-    }
-
-    try {
-      return Double.parseDouble(valueStr);
-    } catch (NumberFormatException e) {
-      return defaultValue;
-    } // try-catch
-  } // getDouble
-} // EnhancedProperties
+  double getDouble(@NotNull String key, double defaultValue);
+}
