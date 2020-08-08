@@ -10,7 +10,7 @@ import java.util.Properties;
 
 /**
  * Abstract base-class for enhanced properties that are either stored in the application's resources or the file-system.
- * <br />
+ * <br>
  * The keys in both files can override each other. To specify, which file will be used first, you can use the
  * {@link ReadRule} annotation.
  */

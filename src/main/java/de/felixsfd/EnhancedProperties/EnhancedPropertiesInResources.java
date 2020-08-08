@@ -9,9 +9,9 @@ import java.util.Properties;
 
 /**
  * Abstract base-class for enhanced properties that are stored in the application's resources.
- * <br />
+ * <br>
  * If the file is stored in the file-system, please use {@link EnhancedPropertiesInFile}.
- * <br />
+ * <br>
  * If you want to use the properties from a file in the file-system and in the resources at the same time
  * (overwriting each other), you can use {@link EnhancedPropertiesInFileOrResources}.
  */

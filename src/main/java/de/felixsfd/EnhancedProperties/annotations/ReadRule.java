@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Rules on how to read a properties file.
- * <br />
+ * <br>
  * This is mainly used by {@link de.felixsfd.EnhancedProperties.EnhancedPropertiesInFileOrResources} to specify,
  * which location to check first.
  */

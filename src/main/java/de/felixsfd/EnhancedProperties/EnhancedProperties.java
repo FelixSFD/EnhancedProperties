@@ -7,7 +7,7 @@ import java.util.Objects;
 
 /**
  * Abstract base class for the properties-wrapper. Do not implement this class.
- * <br />
+ * <br>
  * Use one of these instead:
  * <ul>
  *   <li>{@link EnhancedPropertiesInFile}</li>
@@ -25,7 +25,7 @@ abstract class EnhancedProperties {
 
   /**
    * Returns the string-value of a key in the properties file.
-   * <br />
+   * <br>
    * When implementing this method, make sure to read the {@link java.util.Properties} correctly.
    * @param key Key in the properties-file
    * @return Value es string
@@ -36,7 +36,7 @@ abstract class EnhancedProperties {
 
   /**
    * Returns the string-value of a key in the properties file.
-   * <br />
+   * <br>
    * When implementing this method, make sure to read the {@link java.util.Properties} correctly.
    * @param key Key in the properties-file
    * @param defaultValue Default value, if the value was null
@@ -48,7 +48,7 @@ abstract class EnhancedProperties {
 
   /**
    * Returns the content of the key as short
-   * <br />
+   * <br>
    * Any exceptions while parsing will be thrown
    * @param key Key in the Properties-File
    * @return Values as Short
@@ -82,7 +82,7 @@ abstract class EnhancedProperties {
 
   /**
    * Returns the content of the key as int
-   * <br />
+   * <br>
    * Any exceptions while parsing will be thrown
    * @param key Key in the Properties-File
    * @return Values as Integer
@@ -116,7 +116,7 @@ abstract class EnhancedProperties {
 
   /**
    * Returns the content of the key as long
-   * <br />
+   * <br>
    * Any exceptions while parsing will be thrown
    * @param key Key in the Properties-File
    * @return Values as Long
@@ -150,7 +150,7 @@ abstract class EnhancedProperties {
 
   /**
    * Returns the content of the key as float
-   * <br />
+   * <br>
    * Any exceptions while parsing will be thrown
    * @param key Key in the Properties-File
    * @return Values as Float
@@ -184,7 +184,7 @@ abstract class EnhancedProperties {
 
   /**
    * Returns the content of the key as double
-   * <br />
+   * <br>
    * Any exceptions while parsing will be thrown
    * @param key Key in the Properties-File
    * @return Values as Double
