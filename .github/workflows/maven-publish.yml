@@ -31,8 +31,8 @@ jobs:
            nexus_username: ${{ secrets.nexus_username }}
            nexus_password: ${{ secrets.nexus_password }}
 
-       - name: Deploy to GitHub packages
-         run: mvn -B deploy --file pom.xml
-         env:
-            GITHUB_TOKEN: ${{ github.token }}
-            GITHUB_ACTOR: FelixSFD
+       #- name: Deploy to GitHub packages
+       #  run: mvn -B deploy --file pom.xml
+       #  env:
+       #     GITHUB_TOKEN: ${{ github.token }}
+       #     GITHUB_ACTOR: FelixSFD
