@@ -79,6 +79,13 @@ public class EnhancedPropertiesInFileTest extends EnhancedPropertiesTest {
   }
 
 
+  @Override
+  @Test
+  public void getBoolean() {
+    super.getBoolean();
+  }
+
+
   @Test
   public void getPath() {
     String path = ((EnhancedPropertiesInFile)testProperties).getPath();
