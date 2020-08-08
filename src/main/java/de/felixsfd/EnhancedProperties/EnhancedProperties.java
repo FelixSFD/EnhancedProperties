@@ -140,4 +140,19 @@ public interface EnhancedProperties {
    * @return Values as Double
    */
   double getDouble(@NotNull String key, double defaultValue);
+
+  /**
+   * Returns the content of the key as boolean
+   * @param key Key in the Properties-File
+   * @return Values as Boolean
+   */
+  boolean getBoolean(@NotNull String key);
+
+  /**
+   * Returns the content of the key as boolean
+   * @param key Key in the Properties-File
+   * @param defaultValue Value, if the Key is null
+   * @return Values as Boolean
+   */
+  boolean getBoolean(@NotNull String key, boolean defaultValue);
 }

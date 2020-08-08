@@ -222,4 +222,36 @@ abstract class EnhancedPropertiesImpl implements EnhancedProperties {
       return defaultValue;
     } // try-catch
   } // getDouble
+
+
+  /**
+   * Returns the content of the key as boolean
+   *
+   * @param key Key in the Properties-File
+   * @return Values as Boolean
+   */
+  @Override
+  public boolean getBoolean(@NotNull String key) {
+    String valueStr = getString(key);
+    return Boolean.parseBoolean(Objects.requireNonNull(valueStr));
+  }
+
+
+  /**
+   * Returns the content of the key as boolean
+   *
+   * @param key          Key in the Properties-File
+   * @param defaultValue Value, if the Key is null
+   * @return Values as Boolean
+   */
+  @Override
+  public boolean getBoolean(@NotNull String key, boolean defaultValue) {
+    String valueStr = getString(key);
+
+    if (valueStr == null) {
+      return defaultValue;
+    }
+
+    return Boolean.parseBoolean(valueStr);
+  }
 } // EnhancedProperties
