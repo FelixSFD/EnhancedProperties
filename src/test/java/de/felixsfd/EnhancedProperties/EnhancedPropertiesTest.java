@@ -121,4 +121,28 @@ public class EnhancedPropertiesTest {
     value = testProperties.getDouble("hello", 13.37f);
     Assert.assertEquals("Wrong defaultValue for key 'hello'", 13.37f, value, 0.0000000000001);
   }
+
+
+  public void getBoolean() {
+    boolean value = testProperties.getBoolean("bool");
+    Assert.assertTrue("Wrong value for key 'bool'", value);
+
+    value = testProperties.getBoolean("bool2");
+    Assert.assertFalse("Wrong value for key 'bool2'", value);
+
+    value = testProperties.getBoolean("bool3");
+    Assert.assertFalse("Wrong value for key 'bool3'", value);
+
+    value = testProperties.getBoolean("bool4");
+    Assert.assertFalse("Wrong value for key 'bool4'", value);
+
+    value = testProperties.getBoolean("bool5");
+    Assert.assertFalse("Wrong value for key 'bool5'", value);
+
+    value = testProperties.getBoolean("bool_null", true);
+    Assert.assertTrue("Wrong default value for key 'bool_null'", value);
+
+    value = testProperties.getBoolean("bool_null", false);
+    Assert.assertFalse("Wrong default value for key 'bool_null'", value);
+  }
 }
