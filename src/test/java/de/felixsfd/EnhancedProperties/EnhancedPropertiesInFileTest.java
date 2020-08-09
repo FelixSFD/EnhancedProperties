@@ -22,6 +22,7 @@
 
 package de.felixsfd.EnhancedProperties;
 
+import de.felixsfd.EnhancedProperties.exceptions.EPSetPropertyException;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Assert;
@@ -115,7 +116,7 @@ public class EnhancedPropertiesInFileTest extends EnhancedWriteablePropertiesTes
 
 
   @Test
-  public void testWriteable() throws IOException {
+  public void testWriteable() throws IOException, EPSetPropertyException {
     super.setValues();
     super.writeTo(WRITE_PATH);
 

@@ -22,18 +22,30 @@
 
 package de.felixsfd.EnhancedProperties;
 
+import de.felixsfd.EnhancedProperties.exceptions.EPSetPropertyException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
+/**
+ * Interface for a <b>writeable</b> properties-wrapper. Do not implement this interface.
+ * <br>
+ * Use one of these classes instead:
+ * <ul>
+ *   <li>{@link EnhancedPropertiesInFile}</li>
+ *   <li>{@link EnhancedPropertiesInFileOrResources}</li>
+ * </ul>
+ *
+ * @since 1.1.0
+ */
 public interface EnhancedWriteableProperties extends EnhancedProperties {
   /**
    * Sets a given property
    * @param key Name of the property
    * @param value new Value
    */
-  void setString(@NotNull String key, @Nullable String value);
+  void setString(@NotNull String key, @Nullable String value) throws EPSetPropertyException;
 
   /**
    * Sets a given property.
@@ -42,7 +54,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setShort(@NotNull String key, short value);
+  void setShort(@NotNull String key, short value) throws EPSetPropertyException;
 
   /**
    * Sets a given property.
@@ -51,7 +63,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setInt(@NotNull String key, int value);
+  void setInt(@NotNull String key, int value) throws EPSetPropertyException;
 
   /**
    * Sets a given property.
@@ -60,7 +72,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setLong(@NotNull String key, long value);
+  void setLong(@NotNull String key, long value) throws EPSetPropertyException;
 
   /**
    * Sets a given property.
@@ -69,7 +81,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setFloat(@NotNull String key, float value);
+  void setFloat(@NotNull String key, float value) throws EPSetPropertyException;
 
   /**
    * Sets a given property.
@@ -78,7 +90,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setDouble(@NotNull String key, double value);
+  void setDouble(@NotNull String key, double value) throws EPSetPropertyException;
 
   /**
    * Sets a given property.
@@ -87,7 +99,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setBoolean(@NotNull String key, boolean value);
+  void setBoolean(@NotNull String key, boolean value) throws EPSetPropertyException;
 
   /**
    * Writes the properties to the file
@@ -99,4 +111,8 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param filePath Path of the file to write
    */
   void save(@NotNull String filePath) throws IOException;
+
+  @NotNull Iterable<ChangedPropertyListener> getChangedPropertyListeners();
+
+  void addChangedPropertyListener(@NotNull ChangedPropertyListener changedPropertyListener);
 }

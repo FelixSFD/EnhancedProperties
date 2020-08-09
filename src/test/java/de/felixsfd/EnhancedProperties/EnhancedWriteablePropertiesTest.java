@@ -22,20 +22,74 @@
 
 package de.felixsfd.EnhancedProperties;
 
+import de.felixsfd.EnhancedProperties.exceptions.EPSetPropertyException;
+import de.felixsfd.EnhancedProperties.exceptions.EPTypeNotSupportedException;
+import org.junit.Assert;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class EnhancedWriteablePropertiesTest extends EnhancedPropertiesTest {
   public EnhancedWriteableProperties writeableProperties = null;
 
-  public void setValues() {
+  private boolean listenerCalled = false;
+
+  public void setValues() throws EPSetPropertyException {
+    listenerCalled = false;
+    writeableProperties.addChangedPropertyListener(changedPropertyEvent -> {
+      System.out.println("Listener called for " + changedPropertyEvent.getKey() + ": "
+        + changedPropertyEvent.getOriginalValue() + " => " + changedPropertyEvent.getNewValue());
+      listenerCalled = true;
+    });
+
     writeableProperties.setString("test", "value");
+    Assert.assertTrue("Property change listener not called!", listenerCalled);
+    listenerCalled = false;
+
     writeableProperties.setBoolean("setBool", false);
+    Assert.assertTrue("Property change listener not called!", listenerCalled);
+    listenerCalled = false;
+
     writeableProperties.setBoolean("setBool2", true);
+    Assert.assertTrue("Property change listener not called!", listenerCalled);
+    listenerCalled = false;
+
     writeableProperties.setShort("setShort", (short)-123);
+    Assert.assertTrue("Property change listener not called!", listenerCalled);
+    listenerCalled = false;
+
     writeableProperties.setInt("setInt", 1337);
+    Assert.assertTrue("Property change listener not called!", listenerCalled);
+    listenerCalled = false;
+
     writeableProperties.setLong("setLong", 993489234822222L);
+    Assert.assertTrue("Property change listener not called!", listenerCalled);
+    listenerCalled = false;
+
     writeableProperties.setFloat("setFloat", 13.37f);
+    Assert.assertTrue("Property change listener not called!", listenerCalled);
+    listenerCalled = false;
+
     writeableProperties.setDouble("setDouble", 13.33333337);
+    Assert.assertTrue("Property change listener not called!", listenerCalled);
+    listenerCalled = false;
+
+    //Expect exception!
+    if (writeableProperties instanceof EnhancedWriteablePropertiesImpl) {
+      System.out.println("Testing unsupported type in EnhancedWriteablePropertiesImpl");
+      try {
+        EnhancedWriteablePropertiesImpl enhancedWriteableProperties = (EnhancedWriteablePropertiesImpl) writeableProperties;
+        enhancedWriteableProperties.setValue("error", new ArrayList<String>());
+
+        Assert.fail("EPTypeNotSupportedException not thrown!");
+      } catch (EPTypeNotSupportedException e) {
+        System.out.println("Exception thrown as expected:");
+        System.out.println("Type: " + e.getType().getName());
+        e.printStackTrace();
+      }
+    } else {
+      System.out.println("Skipping test for unsupported types in setValue");
+    }
   }
 
 

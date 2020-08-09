@@ -104,7 +104,9 @@ public abstract class EnhancedPropertiesInFileOrResources extends EnhancedWritea
    */
   @Override
   public void setString(@NotNull String key, @Nullable String value) {
+    String originalStr = getString(key, null);
     propertiesFile.put(key, value);
+    propertyChanged(key, originalStr, value);
   }
 
 

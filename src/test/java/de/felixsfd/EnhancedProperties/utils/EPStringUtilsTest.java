@@ -20,18 +20,20 @@
  * SOFTWARE.
  */
 
-package de.felixsfd.EnhancedProperties;
+package de.felixsfd.EnhancedProperties.utils;
 
-import de.felixsfd.EnhancedProperties.utils.EPStringUtilsTest;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import de.felixsfd.EnhancedProperties.EnhancedPropertiesTest;
+import org.junit.Assert;
+import org.junit.Test;
 
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-  EnhancedPropertiesInFileTest.class
-  , EnhancedPropertiesInResourcesTest.class
-  , EnhancedPropertiesInFileOrResourcesTest.class
-  , EPStringUtilsTest.class
-})
-public class EnhancedPropertiesTestSuite {
+public class EPStringUtilsTest extends EnhancedPropertiesTest {
+
+  @Test
+  public void firstLetterUppercase() {
+    Assert.assertEquals("Hello", EPStringUtils.firstLetterUppercase("hello"));
+    Assert.assertEquals("HelloWorld", EPStringUtils.firstLetterUppercase("helloWorld"));
+    Assert.assertEquals("!Test", EPStringUtils.firstLetterUppercase("!Test"));
+    Assert.assertEquals("1234", EPStringUtils.firstLetterUppercase("1234"));
+    Assert.assertEquals("_test", EPStringUtils.firstLetterUppercase("_test"));
+  }
 }

@@ -20,18 +20,23 @@
  * SOFTWARE.
  */
 
-package de.felixsfd.EnhancedProperties;
+package de.felixsfd.EnhancedProperties.exceptions;
 
-import de.felixsfd.EnhancedProperties.utils.EPStringUtilsTest;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import de.felixsfd.EnhancedProperties.EnhancedProperties;
 
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-  EnhancedPropertiesInFileTest.class
-  , EnhancedPropertiesInResourcesTest.class
-  , EnhancedPropertiesInFileOrResourcesTest.class
-  , EPStringUtilsTest.class
-})
-public class EnhancedPropertiesTestSuite {
+/**
+ * Exception for errors while setting a property in {@link de.felixsfd.EnhancedProperties.EnhancedWriteableProperties}
+ *
+ * @since 1.1.0
+ */
+public class EPSetPropertyException extends EnhancedPropertiesException {
+  /**
+   * Constructor with message, properties-instance and nested exception
+   * @param properties Instance of the affected {@link EnhancedProperties}
+   * @param message Message describing the error
+   * @param exception nested exception if available
+   */
+  public EPSetPropertyException(EnhancedProperties properties, String message, Throwable exception) {
+    super(properties, message, exception);
+  }
 }
