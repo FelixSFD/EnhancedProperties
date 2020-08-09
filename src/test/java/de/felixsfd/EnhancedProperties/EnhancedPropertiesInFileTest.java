@@ -129,7 +129,7 @@ public class EnhancedPropertiesInFileTest extends EnhancedWriteablePropertiesTes
     String expectedContent = FileUtils.readFileToString(expectedFile, Charset.defaultCharset());
     String writtenContent = FileUtils.readFileToString(writtenFile, Charset.defaultCharset());
 
-    Pattern excludeCommentsPattern = Pattern.compile("^#.*$\\n", Pattern.MULTILINE);
+    Pattern excludeCommentsPattern = Pattern.compile("^(#.*|)?$\\n", Pattern.MULTILINE);
     Matcher matcher1 = excludeCommentsPattern.matcher(expectedContent);
     Matcher matcher2 = excludeCommentsPattern.matcher(writtenContent);
     expectedContent = matcher1.replaceAll("");

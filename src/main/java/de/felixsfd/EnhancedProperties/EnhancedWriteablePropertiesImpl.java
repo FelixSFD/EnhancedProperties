@@ -22,6 +22,8 @@
 
 package de.felixsfd.EnhancedProperties;
 
+import org.jetbrains.annotations.NotNull;
+
 public abstract class EnhancedWriteablePropertiesImpl extends EnhancedPropertiesImpl implements EnhancedWriteableProperties {
   /**
    * Sets a given property.
@@ -32,7 +34,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    * @param value new Value
    */
   @Override
-  public final void setShort(String key, short value) {
+  public final void setShort(@NotNull String key, short value) {
     setString(key, String.valueOf(value));
   }
 
@@ -46,7 +48,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    * @param value new Value
    */
   @Override
-  public final void setInt(String key, int value) {
+  public final void setInt(@NotNull String key, int value) {
     setString(key, String.valueOf(value));
   }
 
@@ -60,7 +62,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    * @param value new Value
    */
   @Override
-  public final void setLong(String key, long value) {
+  public final void setLong(@NotNull String key, long value) {
     setString(key, String.valueOf(value));
   }
 
@@ -74,7 +76,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    * @param value new Value
    */
   @Override
-  public final void setFloat(String key, float value) {
+  public final void setFloat(@NotNull String key, float value) {
     setString(key, String.valueOf(value));
   }
 
@@ -88,7 +90,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    * @param value new Value
    */
   @Override
-  public final void setDouble(String key, double value) {
+  public final void setDouble(@NotNull String key, double value) {
     setString(key, String.valueOf(value));
   }
 
@@ -102,7 +104,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    * @param value new Value
    */
   @Override
-  public final void setBoolean(String key, boolean value) {
+  public final void setBoolean(@NotNull String key, boolean value) {
     setString(key, String.valueOf(value));
   }
 }

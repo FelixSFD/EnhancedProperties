@@ -22,6 +22,9 @@
 
 package de.felixsfd.EnhancedProperties;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.IOException;
 
 public interface EnhancedWriteableProperties extends EnhancedProperties {
@@ -30,7 +33,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setString(String key, String value);
+  void setString(@NotNull String key, @Nullable String value);
 
   /**
    * Sets a given property.
@@ -39,7 +42,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setShort(String key, short value);
+  void setShort(@NotNull String key, short value);
 
   /**
    * Sets a given property.
@@ -48,7 +51,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setInt(String key, int value);
+  void setInt(@NotNull String key, int value);
 
   /**
    * Sets a given property.
@@ -57,7 +60,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setLong(String key, long value);
+  void setLong(@NotNull String key, long value);
 
   /**
    * Sets a given property.
@@ -66,7 +69,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setFloat(String key, float value);
+  void setFloat(@NotNull String key, float value);
 
   /**
    * Sets a given property.
@@ -75,7 +78,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setDouble(String key, double value);
+  void setDouble(@NotNull String key, double value);
 
   /**
    * Sets a given property.
@@ -84,7 +87,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * @param key Name of the property
    * @param value new Value
    */
-  void setBoolean(String key, boolean value);
+  void setBoolean(@NotNull String key, boolean value);
 
   /**
    * Writes the properties to the file
@@ -95,5 +98,5 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * Writes the properties to a different file
    * @param filePath Path of the file to write
    */
-  void save(String filePath) throws IOException;
+  void save(@NotNull String filePath) throws IOException;
 }
