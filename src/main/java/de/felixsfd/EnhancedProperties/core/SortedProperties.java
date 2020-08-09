@@ -29,6 +29,12 @@ import java.util.TreeSet;
 
 /**
  * Wraps the default {@link Properties} class to sort the keys
+ * <br>
+ * Thanks to <a href="https://stackoverflow.com/users/2959/steve-mcleod">Steve McLeod</a>
+ * on <a href="https://stackoverflow.com/a/17011319/4687348">Stack Overflow</a>!
+ *
+ * @since 1.1.0
+ * @author <a href="https://stackoverflow.com/users/2959/steve-mcleod">Steve McLeod</a>
  */
 public class SortedProperties extends Properties {
   @Override

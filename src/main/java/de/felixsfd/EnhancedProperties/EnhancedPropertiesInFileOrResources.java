@@ -23,6 +23,7 @@
 package de.felixsfd.EnhancedProperties;
 
 import de.felixsfd.EnhancedProperties.annotations.ReadRule;
+import de.felixsfd.EnhancedProperties.core.SortedProperties;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +41,7 @@ import java.util.Properties;
 public abstract class EnhancedPropertiesInFileOrResources extends EnhancedWriteablePropertiesImpl {
   @NotNull private final String filePath;
   @NotNull private final String resourcesPath;
-  @NotNull private final Properties propertiesFile;
+  @NotNull private final SortedProperties propertiesFile;
   @NotNull private final Properties propertiesResources;
 
 
