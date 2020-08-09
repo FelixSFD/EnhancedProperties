@@ -22,16 +22,21 @@
 
 package de.felixsfd.EnhancedProperties;
 
-import de.felixsfd.EnhancedProperties.utils.EPStringUtilsTest;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-  EnhancedPropertiesInFileTest.class
-  , EnhancedPropertiesInResourcesTest.class
-  , EnhancedPropertiesInFileOrResourcesTest.class
-  , EPStringUtilsTest.class
-})
-public class EnhancedPropertiesTestSuite {
+/**
+ * Listener for changed properties in {@link EnhancedWriteableProperties}
+ * <br>
+ * You can add new listeners via {@link EnhancedWriteableProperties#addChangedPropertyListener(ChangedPropertyListener)}
+ * @since 1.1.0
+ */
+@FunctionalInterface
+public interface ChangedPropertyListener {
+  /**
+   * Whenever a property was changed via a setter,
+   * this method will be called to inform all listeners
+   * @param changedPropertyEvent Information about the change including
+   *                             new value, old value and type
+   *
+   * @since 1.1.0
+   */
+  void propertyChanged(ChangedPropertyEvent<?> changedPropertyEvent);
 }

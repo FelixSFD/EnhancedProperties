@@ -20,18 +20,30 @@
  * SOFTWARE.
  */
 
-package de.felixsfd.EnhancedProperties;
+package de.felixsfd.EnhancedProperties.utils;
 
-import de.felixsfd.EnhancedProperties.utils.EPStringUtilsTest;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import org.jetbrains.annotations.NotNull;
 
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-  EnhancedPropertiesInFileTest.class
-  , EnhancedPropertiesInResourcesTest.class
-  , EnhancedPropertiesInFileOrResourcesTest.class
-  , EPStringUtilsTest.class
-})
-public class EnhancedPropertiesTestSuite {
+/**
+ * Various Utility functions for strings
+ */
+public class EPStringUtils {
+  /**
+   * Converts the first letter of a {@link String} to uppercase.
+   * The rest of the string will not be affected.
+   * <br>
+   * Example:<br>
+   * <code>
+   *   "hello" -> "Hello"
+   *
+   *   "testString" -> "TestString"
+   * </code>
+   * @param input Input string
+   * @return String with first letter as uppercase
+   * @since 1.1.0
+   */
+  @NotNull
+  public static String firstLetterUppercase(@NotNull String input) {
+    return input.substring(0, 1).toUpperCase() + input.substring(1);
+  }
 }
