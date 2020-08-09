@@ -22,6 +22,7 @@
 
 package de.felixsfd.EnhancedProperties;
 
+import de.felixsfd.EnhancedProperties.exceptions.EPSetPropertyException;
 import de.felixsfd.EnhancedProperties.testProperties.TestPropertiesFileFirst;
 import de.felixsfd.EnhancedProperties.testProperties.TestPropertiesResourcesFirst;
 import org.junit.Assert;
@@ -29,7 +30,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-public class EnhancedPropertiesInFileOrResourcesTest {
+public class EnhancedPropertiesInFileOrResourcesTest extends EnhancedWriteablePropertiesTest {
   public static final String FILE_PATH = "src/test/resources/test.properties";
   public static final String RESOURCES_PATH = "test2.properties";
 
@@ -61,5 +62,17 @@ public class EnhancedPropertiesInFileOrResourcesTest {
 
     integer = properties.getInt("integer_absent", 0);
     Assert.assertEquals(0, integer);
+  }
+
+
+  @Test
+  public void setValues() throws EPSetPropertyException {
+    try {
+      writeableProperties = new TestPropertiesResourcesFirst();
+    } catch (IOException e) {
+      e.printStackTrace();
+      Assert.fail();
+    }
+    super.setValues();
   }
 }

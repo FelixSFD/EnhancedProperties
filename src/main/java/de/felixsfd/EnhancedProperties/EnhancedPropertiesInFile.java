@@ -22,6 +22,7 @@
 
 package de.felixsfd.EnhancedProperties;
 
+import de.felixsfd.EnhancedProperties.core.SortedProperties;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,7 +42,7 @@ import java.util.Properties;
  */
 public abstract class EnhancedPropertiesInFile extends EnhancedWriteablePropertiesImpl {
   @NotNull private final String path;
-  @NotNull private final Properties propertiesInFile;
+  @NotNull private final SortedProperties propertiesInFile;
 
 
   /**
@@ -63,8 +64,8 @@ public abstract class EnhancedPropertiesInFile extends EnhancedWriteableProperti
    * @throws IOException on read error
    */
   @NotNull
-  static Properties readFromFiles(@NotNull String path) throws IOException {
-    Properties prop = new Properties();
+  static SortedProperties readFromFiles(@NotNull String path) throws IOException {
+    SortedProperties prop = new SortedProperties();
 
     try (FileInputStream fis = new FileInputStream(new File(path))) {
       prop.load(fis);
