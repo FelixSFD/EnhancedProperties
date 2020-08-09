@@ -1,4 +1,8 @@
-![Tests](https://github.com/FelixSFD/EnhancedProperties/workflows/Tests/badge.svg) ![Maven Central](https://img.shields.io/maven-central/v/de.felixsfd/EnhancedProperties) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tests](https://github.com/FelixSFD/EnhancedProperties/workflows/Tests/badge.svg)](https://github.com/FelixSFD/EnhancedProperties/actions?query=workflow%3ATests)
+[![javadoc](https://javadoc.io/badge2/de.felixsfd/EnhancedProperties/javadoc.svg)](https://javadoc.io/doc/de.felixsfd/EnhancedProperties)
+[![Maven Central](https://img.shields.io/maven-central/v/de.felixsfd/EnhancedProperties)](https://search.maven.org/artifact/de.felixsfd/EnhancedProperties)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # EnhancedProperties
 _EnhancedProperties_ is an improved way to read `*.properties`-files in Java. It handles reading (and soon writing) files for you, so you don't need to worry about your Input/Output-Streams, closing files etc. There are even methods to parse the data into the most common datatypes.
