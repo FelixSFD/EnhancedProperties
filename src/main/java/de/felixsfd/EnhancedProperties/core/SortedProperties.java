@@ -22,21 +22,39 @@
 
 package de.felixsfd.EnhancedProperties.core;
 
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Properties;
-import java.util.TreeSet;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.*;
 
 /**
  * Wraps the default {@link Properties} class to sort the keys
  * <br>
- * Thanks to <a href="https://stackoverflow.com/users/2959/steve-mcleod">Steve McLeod</a>
- * on <a href="https://stackoverflow.com/a/17011319/4687348">Stack Overflow</a>!
+ * Thanks to <a href="https://stackoverflow.com/users/3681607/smillien62">smillien62</a>
+ * on <a href="https://stackoverflow.com/a/52127284/4687348">Stack Overflow</a>!
  *
  * @since 1.1.0
- * @author <a href="https://stackoverflow.com/users/2959/steve-mcleod">Steve McLeod</a>
+ * @author <a href="https://stackoverflow.com/users/3681607/smillien62">smillien62</a>
  */
 public class SortedProperties extends Properties {
+  @Override
+  public @NotNull Set<Object> keySet() {
+    return Collections.unmodifiableSet(new TreeSet<>(super.keySet()));
+  }
+
+  @Override
+  public @NotNull Set<Map.Entry<Object, Object>> entrySet() {
+
+    Set<Map.Entry<Object, Object>> set1 = super.entrySet();
+    Set<Map.Entry<Object, Object>> set2 = new LinkedHashSet<>(set1.size());
+
+    Iterator<Map.Entry<Object, Object>> iterator = set1.stream().sorted(Comparator.comparing(o -> o.getKey().toString())).iterator();
+
+    while (iterator.hasNext())
+      set2.add(iterator.next());
+
+    return set2;
+  }
+
   @Override
   public synchronized Enumeration<Object> keys() {
     return Collections.enumeration(new TreeSet<>(super.keySet()));
