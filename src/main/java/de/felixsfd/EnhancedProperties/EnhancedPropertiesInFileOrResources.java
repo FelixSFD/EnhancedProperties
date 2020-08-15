@@ -27,6 +27,7 @@ import de.felixsfd.EnhancedProperties.core.SortedProperties;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -46,7 +47,16 @@ public abstract class EnhancedPropertiesInFileOrResources extends EnhancedWritea
 
 
   /**
-   * Constructor with paths to both files
+   * <p>
+   *   Constructor with paths to both files.
+   * </p>
+   * <p>
+   *   <b>Note:</b> Only if the preferred location is
+   *   {@link de.felixsfd.EnhancedProperties.annotations.ReadRule.Location#FILE},
+   *   the file does not need to exist.<br>
+   *   If the preferred location is {@link de.felixsfd.EnhancedProperties.annotations.ReadRule.Location#RESOURCES},
+   *   the file has to exists because it would contain the default values.
+   * </p>
    * @param filePath Path to properties file in file-system
    * @param resourcesPath Path to properties file in resources
    * @throws IOException if one of the files can't be read.
@@ -55,7 +65,19 @@ public abstract class EnhancedPropertiesInFileOrResources extends EnhancedWritea
     this.filePath = filePath;
     this.resourcesPath = resourcesPath;
 
-    propertiesFile = EnhancedPropertiesInFile.readFromFiles(filePath);
+    SortedProperties newFileProperties;
+    try {
+       newFileProperties = EnhancedPropertiesInFile.readFromFiles(filePath);
+    } catch (FileNotFoundException e) {
+      //File not found, but if the preferred location is FILE, the application can still fall back to resources
+      if (getReadRule() != ReadRule.Location.FILE) {
+        throw e;
+      }
+
+      newFileProperties = new SortedProperties();
+    }
+    propertiesFile = newFileProperties;
+
     propertiesResources = EnhancedPropertiesInResources.readFromResources(resourcesPath);
   } // EnhancedPropertiesInFileOrResources
 

@@ -28,7 +28,10 @@ import de.felixsfd.EnhancedProperties.testProperties.TestPropertiesResourcesFirs
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class EnhancedPropertiesInFileOrResourcesTest extends EnhancedWriteablePropertiesTest {
   public static final String FILE_PATH = "src/test/resources/test.properties";
@@ -74,5 +77,41 @@ public class EnhancedPropertiesInFileOrResourcesTest extends EnhancedWriteablePr
       Assert.fail();
     }
     super.setValues();
+  }
+
+
+  @Test
+  public void fileInFileSystemDoesNotExist() throws IOException {
+    System.out.println("Renaming test.properties, so the application will not find it");
+    Files.move(Paths.get(FILE_PATH), Paths.get(FILE_PATH + ".gone"));
+
+    try {
+      writeableProperties = new TestPropertiesFileFirst();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+      Assert.fail("The file was not found, but the @ReadRule is preferredLocation = FILE");
+    } finally {
+      System.out.println("Move file back");
+      Files.move(Paths.get(FILE_PATH + ".gone"), Paths.get(FILE_PATH));
+    }
+  }
+
+
+  @Test
+  public void fileInFileSystemDoesNotExist2() throws IOException {
+    System.out.println("Renaming test.properties, so the application will not find it");
+    Files.move(Paths.get(FILE_PATH), Paths.get(FILE_PATH + ".gone"));
+
+    try {
+      writeableProperties = new TestPropertiesResourcesFirst();
+
+      Assert.fail("No exception was thrown, although the @ReadRule is preferredLocation = RESOURCES" +
+        " and the file in file-system does not exist.");
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } finally {
+      System.out.println("Move file back");
+      Files.move(Paths.get(FILE_PATH + ".gone"), Paths.get(FILE_PATH));
+    }
   }
 }
