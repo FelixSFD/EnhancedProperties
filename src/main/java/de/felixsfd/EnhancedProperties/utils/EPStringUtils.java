@@ -34,9 +34,9 @@ public class EPStringUtils {
    * <br>
    * Example:<br>
    * <code>
-   *   "hello" -> "Hello"
+   *   "hello" becomes "Hello"
    *
-   *   "testString" -> "TestString"
+   *   "testString" becomes "TestString"
    * </code>
    * @param input Input string
    * @return String with first letter as uppercase

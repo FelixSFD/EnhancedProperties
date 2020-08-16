@@ -115,6 +115,7 @@ public abstract class EnhancedPropertiesInFile extends EnhancedWriteableProperti
 
   /**
    * Writes the properties to the file
+   * @throws IOException if the file can't be saved
    */
   @Override
   public void save() throws IOException {
@@ -126,6 +127,7 @@ public abstract class EnhancedPropertiesInFile extends EnhancedWriteableProperti
    * Writes the properties to a different file
    *
    * @param filePath Path of the file to write
+   * @throws IOException if the file can't be saved
    */
   @Override
   public void save(@NotNull String filePath) throws IOException {

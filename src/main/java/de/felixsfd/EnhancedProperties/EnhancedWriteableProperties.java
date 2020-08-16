@@ -44,6 +44,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * Sets a given property
    * @param key Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   void setString(@NotNull String key, @Nullable String value) throws EPSetPropertyException;
 
@@ -53,6 +54,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * Since the properties are always stored as strings, {@link String#valueOf(int)} )} will be used.
    * @param key Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   void setShort(@NotNull String key, short value) throws EPSetPropertyException;
 
@@ -62,6 +64,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * Since the properties are always stored as strings, {@link String#valueOf(int)} will be used.
    * @param key Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   void setInt(@NotNull String key, int value) throws EPSetPropertyException;
 
@@ -71,6 +74,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * Since the properties are always stored as strings, {@link String#valueOf(long)} will be used.
    * @param key Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   void setLong(@NotNull String key, long value) throws EPSetPropertyException;
 
@@ -80,6 +84,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * Since the properties are always stored as strings, {@link String#valueOf(float)} will be used.
    * @param key Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   void setFloat(@NotNull String key, float value) throws EPSetPropertyException;
 
@@ -89,6 +94,7 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * Since the properties are always stored as strings, {@link String#valueOf(double)} will be used.
    * @param key Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   void setDouble(@NotNull String key, double value) throws EPSetPropertyException;
 
@@ -98,17 +104,20 @@ public interface EnhancedWriteableProperties extends EnhancedProperties {
    * Since the properties are always stored as strings, {@link String#valueOf(boolean)} will be used.
    * @param key Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   void setBoolean(@NotNull String key, boolean value) throws EPSetPropertyException;
 
   /**
    * Writes the properties to the file
+   * @throws IOException if the file could not be saved
    */
   void save() throws IOException;
 
   /**
    * Writes the properties to a different file
    * @param filePath Path of the file to write
+   * @throws IOException if the file could not be saved
    */
   void save(@NotNull String filePath) throws IOException;
 

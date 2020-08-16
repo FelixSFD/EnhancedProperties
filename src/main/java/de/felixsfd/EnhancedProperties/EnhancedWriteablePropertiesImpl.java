@@ -56,6 +56,8 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    * Sets a given property
    * @param key Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
+   * @throws EPTypeNotSupportedException if the type of the value is not supported
    */
   protected void setValue(@NotNull String key, @Nullable Object value) throws EPTypeNotSupportedException, EPSetPropertyException {
     Object originalValue = getValue(key, value != null ? value.getClass() : String.class);
@@ -127,6 +129,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    *
    * @param key   Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   @Override
   public final void setShort(@NotNull String key, short value) throws EPSetPropertyException {
@@ -141,6 +144,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    *
    * @param key   Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   @Override
   public final void setInt(@NotNull String key, int value) throws EPSetPropertyException {
@@ -155,6 +159,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    *
    * @param key   Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   @Override
   public final void setLong(@NotNull String key, long value) throws EPSetPropertyException {
@@ -169,6 +174,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    *
    * @param key   Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   @Override
   public final void setFloat(@NotNull String key, float value) throws EPSetPropertyException {
@@ -183,6 +189,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    *
    * @param key   Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   @Override
   public final void setDouble(@NotNull String key, double value) throws EPSetPropertyException {
@@ -197,6 +204,7 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
    *
    * @param key   Name of the property
    * @param value new Value
+   * @throws EPSetPropertyException if the property could not be set
    */
   @Override
   public final void setBoolean(@NotNull String key, boolean value) throws EPSetPropertyException {
@@ -231,6 +239,10 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
   }
 
 
+  /**
+   * @return All listeners for changed properties
+   * @see ChangedPropertyListener
+   */
   @Override
   public @NotNull Set<ChangedPropertyListener> getChangedPropertyListeners() {
     if (changedPropertyListeners == null) {
@@ -241,6 +253,11 @@ public abstract class EnhancedWriteablePropertiesImpl extends EnhancedProperties
   }
 
 
+  /**
+   * Adds a new {@link ChangedPropertyListener}
+   * @param changedPropertyListener new listener
+   * @see #getChangedPropertyListeners()
+   */
   @Override
   public void addChangedPropertyListener(@NotNull ChangedPropertyListener changedPropertyListener) {
     getChangedPropertyListeners().add(changedPropertyListener);
