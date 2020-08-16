@@ -14,7 +14,7 @@ This library is especially useful, if you have a large amount of properties.
 <dependency>
   <groupId>de.felixsfd</groupId>
   <artifactId>enhancedproperties</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
